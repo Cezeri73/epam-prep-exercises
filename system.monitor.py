@@ -20,14 +20,18 @@ try:
         
         # Ekrana bas
         print(f"Rapor: {json.dumps(veri)}")
-        
-        # Dosyaya JSON olarak EKLE (append)
-        with open("system_log.json", "a") as f:
-            json.dump(veri, f)
-            f.write("\n") # Her kayıt yeni satıra
-            
+        if cpu_yuzde > 50:
+            print("UYARI: CPU kullanımı %80'in üzerinde!")
+            # Dosyaya JSON olarak EKLE (append)
+            with open("system_log.json", "a") as f:
+                json.dump(veri, f)
+                f.write("\n") # Her kayıt yeni satıra
         # 3 saniye bekle (CPU yanmasın diye)
-        time.sleep(3)
+        time.sleep(3)   
+          
+    else:
+            print("Sistem Normal, kayıt alınmadı.")
+
 
 except KeyboardInterrupt:
     print("\nİşlem kullanıcı tarafından durduruldu.")
